@@ -1,0 +1,80 @@
+{
+  "run_id": "qwen35_4b_ablation_v2_20260930_104220",
+  "subject": "qwen35_4b_ablation_v2",
+  "group": "ablate-t0-mt8192",
+  "tags": [
+    "ablation",
+    "iso",
+    "persona-v2"
+  ],
+  "decoding": {
+    "temperature": 0.0,
+    "max_tokens": 8192,
+    "top_p": 1.0,
+    "seed": 20260910,
+    "presence_penalty": 0.0,
+    "frequency_penalty": 0.0,
+    "stop": null,
+    "extra_body": {}
+  },
+  "model": {
+    "model_path": "models/Qwen3.5-4B",
+    "model_revision": "local",
+    "tokenizer_path": "models/Qwen3.5-4B",
+    "tokenizer_sha256": "fe000e3ed39ed12b8d2481d527d44f93c65d37e87645d2dcc80d1bf9d50d2927",
+    "model_index_sha256": "eae340074abb0a5f31a6621f7ae8e8248a7c1790df04a722c4e4b70c2a6d1dbb",
+    "model_config_sha256": "ddc63e1c717afa86c865bb5e01313d89d72bb53b97ad4a8a03ba8510c0621670",
+    "max_model_len": 12288
+  },
+  "endpoint": {
+    "base_url": "http://127.0.0.1:8000/v1",
+    "model": "qwen3.5-4b"
+  },
+  "system_prompt": {
+    "file": "personas/xiaonuan_chat_4b_v2.txt",
+    "sha256": "f66acbcc57f07f63d4b5f960fb4a2f5647930efa1806bcff731d81422064a3da"
+  },
+  "config_file": "eval/config.yaml",
+  "config_sha256": "8c95d0e77197efc69d77764da51fa0b31cec1a4051a40c855c9d8c7956f05231",
+  "config_files": [
+    {
+      "path": "eval/config.yaml",
+      "sha256": "8c95d0e77197efc69d77764da51fa0b31cec1a4051a40c855c9d8c7956f05231"
+    }
+  ],
+  "data": {
+    "adapter_version": "2.0",
+    "sampling_seed": 20260910,
+    "suites": {
+      "elder_safety": {
+        "n": 500,
+        "sha256": "5fb355079bad6c17e98ac4dba2836aa3c4bfc00568a036169cf25120dfa63ec1"
+      }
+    }
+  },
+  "scoring": {
+    "scorer_version": "1.1",
+    "rule_version": "1.1",
+    "renderer_version": "1.0"
+  },
+  "code": {
+    "git_commit": "bfac6a666953fc62d19e1ccbcfe21fcc3000489e",
+    "dirty": true
+  },
+  "timing": {
+    "started": "2026-09-30 10:42:20",
+    "finished": "2026-09-30 10:42:20"
+  },
+  "outcome": {
+    "n_tasks": 500,
+    "done_before": 500,
+    "n_pending": 0,
+    "ok": 0,
+    "err": 0,
+    "elapsed_s": 0.0,
+    "suite": "elder_safety",
+    "archived": true,
+    "limited": false
+  },
+  "kind": "run"
+}

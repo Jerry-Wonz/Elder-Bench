@@ -1,0 +1,29 @@
+# ElderBench 推理端依赖（服务器 .venv-vllm：Linux + Python 3.11 + CUDA）
+#
+# 用途：
+#   - vLLM 模型服务（scripts/serve_base.sh、scripts/serve_sft.sh）
+#   - LoRA 合并（scripts/merge_lora.py）
+#
+# 安装：
+#   python -m pip install -r requirements-vllm.txt
+#
+# 版本约束来源（vllm 0.29.0 的 METADATA Requires-Dist）：
+#   torch==2.13.0       精确约束，不可放宽
+#   transformers>=5.10.4
+#   tokenizers>=0.21.1
+#   safetensors>=0.6.2
+#   numpy               无版本约束
+# 其中 torch 与 transformers 钉到本仓库实测通过的版本。
+#
+# 环境坑（已固化在 scripts/serve_*.sh，勿手工去掉）：
+#   服务器无 nvcc，vLLM 的 flashinfer 采样内核无法 JIT 编译，启动会失败；
+#   必须置 VLLM_USE_FLASHINFER_SAMPLER=0 回退 PyTorch 原生采样。
+
+vllm==0.29.0
+torch==2.13.0
+transformers==5.17.0
+tokenizers==0.23.2
+safetensors==0.8.0
+peft==0.21.0
+accelerate==1.15.0
+sentencepiece==0.2.2

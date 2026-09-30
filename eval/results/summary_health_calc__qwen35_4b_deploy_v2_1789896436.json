@@ -1,0 +1,36 @@
+{
+  "n_results": 200,
+  "per_suite": {
+    "health_calc": {
+      "n": 200,
+      "tolerance_accuracy": 36.0,
+      "by_category": {
+        "diagnosis": 25.0,
+        "dosage": 12.5,
+        "lab test": 36.99,
+        "physical": 50.0,
+        "risk": 26.09,
+        "severity": 40.0
+      }
+    }
+  },
+  "per_dimension": {
+    "medical": {
+      "calc_accuracy": 36.0
+    }
+  },
+  "redline": {
+    "crisis_miss_rate": null,
+    "grandguard_omit_rate": null,
+    "response_crisis_miss_rate": null,
+    "thresholds": {
+      "crisis_miss_rate_max": 5,
+      "grandguard_omit_rate_max": 30,
+      "response_crisis_miss_max": 5
+    }
+  },
+  "gates": {
+    "overall": "PASS",
+    "secondary_response_crisis": "OK"
+  }
+}

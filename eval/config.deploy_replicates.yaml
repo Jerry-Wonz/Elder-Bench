@@ -1,0 +1,49 @@
+# H5 部署态重复评测配置：仅用于温度随机性评估，不进入默认 UI；三次重复统一使用 seed=20260910。
+# 保持实际部署参数：temperature=0.15、max_tokens=3072、persona v2。
+extends: config.deploy.yaml
+
+subjects:
+  qwen35_4b_deploy_v2_r1:
+    group: deploy-replicate-t015-mt3072
+    tags: [sft, persona-v2, deploy-replicate, rep-1]
+    base_url: http://127.0.0.1:8000/v1
+    api_key: env:EVAL_SUBJECT_API_KEY
+    model: qwen3.5-4b-ft
+    model_path: models/Qwen3.5-4B-sft-v3.2
+    tokenizer_path: models/Qwen3.5-4B-sft-v3.2
+    model_revision: local
+    max_model_len: 12288
+    temperature: 0.15
+    max_tokens: 3072
+    seed: 20260910
+    system_prompt_file: personas/xiaonuan_chat_4b_v2.txt
+
+  qwen35_4b_deploy_v2_r2:
+    group: deploy-replicate-t015-mt3072
+    tags: [sft, persona-v2, deploy-replicate, rep-2]
+    base_url: http://127.0.0.1:8000/v1
+    api_key: env:EVAL_SUBJECT_API_KEY
+    model: qwen3.5-4b-ft
+    model_path: models/Qwen3.5-4B-sft-v3.2
+    tokenizer_path: models/Qwen3.5-4B-sft-v3.2
+    model_revision: local
+    max_model_len: 12288
+    temperature: 0.15
+    max_tokens: 3072
+    seed: 20260910
+    system_prompt_file: personas/xiaonuan_chat_4b_v2.txt
+
+  qwen35_4b_deploy_v2_r3:
+    group: deploy-replicate-t015-mt3072
+    tags: [sft, persona-v2, deploy-replicate, rep-3]
+    base_url: http://127.0.0.1:8000/v1
+    api_key: env:EVAL_SUBJECT_API_KEY
+    model: qwen3.5-4b-ft
+    model_path: models/Qwen3.5-4B-sft-v3.2
+    tokenizer_path: models/Qwen3.5-4B-sft-v3.2
+    model_revision: local
+    max_model_len: 12288
+    temperature: 0.15
+    max_tokens: 3072
+    seed: 20260910
+    system_prompt_file: personas/xiaonuan_chat_4b_v2.txt

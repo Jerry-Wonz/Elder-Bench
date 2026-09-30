@@ -1,0 +1,168 @@
+{
+  "checked_at": "2026-09-28 11:38:01",
+  "rule_version": "1.1",
+  "psy_rules": {
+    "n": 800,
+    "dims": {
+      "共情": {
+        "kappa": 0.3483,
+        "tier": "weak",
+        "agreement": 0.7137,
+        "precision": 0.7929,
+        "recall": 0.7827,
+        "f1": 0.7878,
+        "tp": 425,
+        "fp": 111,
+        "fn": 118,
+        "tn": 146,
+        "human_pos_rate": 0.6787,
+        "rule_pos_rate": 0.67,
+        "rule_pass_rate": 67.0
+      },
+      "建议": {
+        "kappa": 0.6791,
+        "tier": "reference",
+        "agreement": 0.8475,
+        "precision": 0.8994,
+        "recall": 0.8529,
+        "f1": 0.8755,
+        "tp": 429,
+        "fp": 48,
+        "fn": 74,
+        "tn": 249,
+        "human_pos_rate": 0.6288,
+        "rule_pos_rate": 0.5962,
+        "rule_pass_rate": 59.62
+      },
+      "担忧": {
+        "kappa": 0.3754,
+        "tier": "weak",
+        "agreement": 0.8562,
+        "precision": 0.7188,
+        "recall": 0.3217,
+        "f1": 0.4444,
+        "tp": 46,
+        "fp": 18,
+        "fn": 97,
+        "tn": 639,
+        "human_pos_rate": 0.1787,
+        "rule_pos_rate": 0.08,
+        "rule_pass_rate": 8.0
+      },
+      "风险评估": {
+        "kappa": 0.3169,
+        "tier": "weak",
+        "agreement": 0.9475,
+        "precision": 0.3056,
+        "recall": 0.3929,
+        "f1": 0.3438,
+        "tp": 11,
+        "fp": 25,
+        "fn": 17,
+        "tn": 747,
+        "human_pos_rate": 0.035,
+        "rule_pos_rate": 0.045,
+        "rule_pass_rate": 4.5
+      },
+      "外部干预": {
+        "kappa": 0.6937,
+        "tier": "reference",
+        "agreement": 0.9113,
+        "precision": 0.9571,
+        "recall": 0.9355,
+        "f1": 0.9462,
+        "tp": 624,
+        "fp": 28,
+        "fn": 43,
+        "tn": 105,
+        "human_pos_rate": 0.8337,
+        "rule_pos_rate": 0.815,
+        "rule_pass_rate": 81.5
+      }
+    },
+    "rule_dual_miss": {
+      "n": 800,
+      "count": 143,
+      "rate": 0.1787,
+      "rate_pct": 17.88,
+      "note": "理想咨询师回复（人工金标）在检测器下的双缺失率，即该指标的噪声地板"
+    },
+    "tiers": {
+      "calibrated": [],
+      "reference": [
+        "建议",
+        "外部干预"
+      ],
+      "weak": [
+        "共情",
+        "担忧",
+        "风险评估"
+      ]
+    }
+  },
+  "elder_rules": {
+    "safe_response": {
+      "n": 1953,
+      "dual_pass_rate": 0.6267,
+      "dual_pass_rate_pct": 62.67,
+      "omit_rate_pct": 37.33,
+      "expect": "high",
+      "by_risk_family": {
+        "R1.1": 0.2419,
+        "R1.2": 0.6717,
+        "R1.3": 0.3354,
+        "R2.1": 0.9293,
+        "R2.2": 0.6885,
+        "R3.1": 0.5686,
+        "R3.2": 0.3146,
+        "R4.1": 0.3724,
+        "R4.2": 0.8013,
+        "R4.3": 0.5942,
+        "R4.4": 0.791,
+        "R5.1": 0.6699,
+        "R5.2": 0.7941
+      }
+    },
+    "unsafe_response": {
+      "n": 1953,
+      "dual_pass_rate": 0.2243,
+      "dual_pass_rate_pct": 22.43,
+      "omit_rate_pct": 77.57,
+      "expect": "low",
+      "by_risk_family": {
+        "R1.1": 0.0484,
+        "R1.2": 0.0303,
+        "R1.3": 0.0732,
+        "R2.1": 0.5859,
+        "R2.2": 0.2787,
+        "R3.1": 0.1176,
+        "R3.2": 0.0787,
+        "R4.1": 0.131,
+        "R4.2": 0.2051,
+        "R4.3": 0.1957,
+        "R4.4": 0.2463,
+        "R5.1": 0.1893,
+        "R5.2": 0.4706
+      }
+    },
+    "discrimination_pr": {
+      "precision": 0.7365,
+      "recall": 0.6267,
+      "f1": 0.6772,
+      "tp": 1224,
+      "fp": 438,
+      "fn": 729,
+      "tn": 1515
+    },
+    "discrimination": 0.4024
+  },
+  "refusal_rule": {
+    "status": "insufficient_positive_gold",
+    "n_negative_gold": 1953,
+    "n_positive_gold": 0,
+    "negative_false_positive": 9,
+    "negative_false_positive_rate": 0.0046,
+    "kappa": null,
+    "note": "已用官方 safe_response 校准负类；缺真正过度拒绝样例，无法计算 kappa。"
+  }
+}

@@ -1,0 +1,141 @@
+{
+  "built_at": "2026-09-25 01:45:55",
+  "seed": 20260910,
+  "adapter_version": "2.0",
+  "external": "benchmark/external",
+  "soulchat_dir": "SoulChat",
+  "suites": {
+    "health_ref": {
+      "n": 400,
+      "by_lang": {
+        "en": 400
+      },
+      "by_source": {
+        "healthbench": 400
+      },
+      "licenses": [
+        "MIT"
+      ],
+      "file": "data\\tasks_health_ref.jsonl"
+    },
+    "health_calc": {
+      "n": 200,
+      "by_lang": {
+        "en": 200
+      },
+      "by_source": {
+        "medcalc": 200
+      },
+      "licenses": [
+        "CC BY-SA 4.0"
+      ],
+      "file": "data\\tasks_health_calc.jsonl"
+    },
+    "health_hallu": {
+      "n": 300,
+      "by_lang": {
+        "en": 300
+      },
+      "by_source": {
+        "medhallu": 300
+      },
+      "licenses": [
+        "MIT"
+      ],
+      "file": "data\\tasks_health_hallu.jsonl"
+    },
+    "psy_support": {
+      "n": 150,
+      "by_lang": {
+        "en": 150
+      },
+      "by_source": {
+        "esconv": 150
+      },
+      "licenses": [
+        "CC BY-NC 4.0"
+      ],
+      "file": "data\\tasks_psy_support.jsonl"
+    },
+    "psy_empathy": {
+      "n": 197,
+      "by_lang": {
+        "zh": 197
+      },
+      "by_source": {
+        "soulchat": 197
+      },
+      "licenses": [
+        "Apache-2.0"
+      ],
+      "file": "data\\tasks_psy_empathy.jsonl"
+    },
+    "psy_calibration": {
+      "n": 97,
+      "by_lang": {
+        "zh": 97
+      },
+      "by_source": {
+        "soulchat": 97
+      },
+      "licenses": [
+        "Apache-2.0"
+      ],
+      "file": "data\\tasks_psy_calibration.jsonl"
+    },
+    "risk_crisis": {
+      "n": 1008,
+      "by_lang": {
+        "zh": 1008
+      },
+      "by_source": {
+        "psycrisis": 608,
+        "soulchat": 400
+      },
+      "licenses": [
+        "Apache-2.0",
+        "CC BY-NC 4.0"
+      ],
+      "file": "data\\tasks_risk_crisis.jsonl"
+    },
+    "risk_response": {
+      "n": 608,
+      "by_lang": {
+        "zh": 608
+      },
+      "by_source": {
+        "psycrisis": 608
+      },
+      "licenses": [
+        "CC BY-NC 4.0"
+      ],
+      "file": "data\\tasks_risk_response.jsonl"
+    },
+    "elder_safety": {
+      "n": 500,
+      "by_lang": {
+        "en": 500
+      },
+      "by_source": {
+        "grandguard": 500
+      },
+      "licenses": [
+        "unspecified (ACL 2026 Findings)"
+      ],
+      "file": "data\\tasks_elder_safety.jsonl"
+    },
+    "elder_refusal": {
+      "n": 500,
+      "by_lang": {
+        "en": 500
+      },
+      "by_source": {
+        "grandguard": 500
+      },
+      "licenses": [
+        "unspecified (ACL 2026 Findings)"
+      ],
+      "file": "data\\tasks_elder_refusal.jsonl"
+    }
+  }
+}

@@ -1,0 +1,274 @@
+{
+  "run_id": "glm53_flash_scorer1.1_20260925_013512",
+  "subject": "glm53_flash",
+  "group": "dec-t0-mt6144",
+  "tags": [
+    "baseline",
+    "api",
+    "reasoning"
+  ],
+  "decoding": {
+    "temperature": 0.0,
+    "max_tokens": 6144,
+    "top_p": null,
+    "seed": null
+  },
+  "endpoint": {
+    "base_url": "http://192.168.13.165:8002/v1",
+    "model": "glm-5.3-flash"
+  },
+  "system_prompt": {
+    "file": null,
+    "sha256": null
+  },
+  "config_file": "eval/config.yaml",
+  "config_sha256": "fd41cdf6355a980a37acbbdbf48774153027942f136abf95c6d3ac450ebcd490",
+  "data": {
+    "adapter_version": "2.0",
+    "sampling_seed": 20260910,
+    "suites": {
+      "elder_refusal": {
+        "n": 500,
+        "sha256": "4ec17821bced1d1f41c1c358db6766ce6d402c205f8beeca9cab3fc4c01dbdcf"
+      },
+      "elder_safety": {
+        "n": 500,
+        "sha256": "5fb355079bad6c17e98ac4dba2836aa3c4bfc00568a036169cf25120dfa63ec1"
+      },
+      "health_calc": {
+        "n": 200,
+        "sha256": "90efc620d5bdcd6378972b5acb7b4054b3155db30b4a716a142d15f95ed2c304"
+      },
+      "health_hallu": {
+        "n": 300,
+        "sha256": "75415398693d5de21dceebdaeba720f394085502ee8182eb0b3a733c8536e245"
+      },
+      "health_ref": {
+        "n": 400,
+        "sha256": "eee95f57f46c0859f74471e94d4b0ffbe32d3b98263bd69673719d4bad4ab641"
+      },
+      "psy_calibration": {
+        "n": 97,
+        "sha256": "9fdc9626d0ad67f360d22cb8c15a56d98c86bed8ab25abc4a1360120743981cb"
+      },
+      "psy_empathy": {
+        "n": 197,
+        "sha256": "a2e932cdfe62412580d6985a377a87eef5beef548abdd5e9114da6059ad5ad2c"
+      },
+      "psy_support": {
+        "n": 150,
+        "sha256": "b9c3263c615456ca23f8b1a62689ee2933a0bfc7c0aa0cef7e22853a63944611"
+      },
+      "risk_crisis": {
+        "n": 1008,
+        "sha256": "33aed7306419751d0b21d29ca0a84199b6943153335c44e150a2291691d11c64"
+      },
+      "risk_response": {
+        "n": 608,
+        "sha256": "21e062181db0fbd9d665241a5207bd76fdceee1b63c3630d06980f68cc151026"
+      }
+    }
+  },
+  "scoring": {
+    "scorer_version": "1.1",
+    "rule_version": "1.1"
+  },
+  "code": {
+    "git_commit": "bfac6a666953fc62d19e1ccbcfe21fcc3000489e",
+    "dirty": true
+  },
+  "timing": {
+    "started": "2026-09-25 01:35:25",
+    "finished": "2026-09-25 01:35:27"
+  },
+  "outcome": {
+    "report_id": "glm53_flash_scorer1.1_20260925_013512",
+    "scorer_version": "1.1",
+    "source": {
+      "result_files": [
+        {
+          "suite": "elder_refusal",
+          "path": "eval/results/results_elder_refusal__glm53_flash.jsonl",
+          "sha256": "831516ff24eab7f2babb3cad3de04fb24c417b04ddff8549cdd09f8a409d76af",
+          "n_rows": 554
+        },
+        {
+          "suite": "elder_safety",
+          "path": "eval/results/results_elder_safety__glm53_flash.jsonl",
+          "sha256": "f85c0e15da16f114fabfe8dbec3f02599389fb33d2cb370ec20c7fac81e75955",
+          "n_rows": 541
+        },
+        {
+          "suite": "health_calc",
+          "path": "eval/results/results_health_calc__glm53_flash.jsonl",
+          "sha256": "1924d23dfe0316776e1ddf932eed856fd567541279e62d1281871dece2edb5f7",
+          "n_rows": 207
+        },
+        {
+          "suite": "health_hallu",
+          "path": "eval/results/results_health_hallu__glm53_flash.jsonl",
+          "sha256": "5ddfb7d49aeb65bfe87b93c5c1db9166d24af5b6eec6d49ff8be11a7bbd1f353",
+          "n_rows": 300
+        },
+        {
+          "suite": "health_ref",
+          "path": "eval/results/results_health_ref__glm53_flash.jsonl",
+          "sha256": "13d4675750137417c5b6985259ecf499c855a97e9ad2c7c3fc440611a45f2882",
+          "n_rows": 437
+        },
+        {
+          "suite": "psy_calibration",
+          "path": "eval/results/results_psy_calibration__glm53_flash.jsonl",
+          "sha256": "1ba9db8586a3667dbdb5535f044568171aab4c3fa4ab89b01ec441938ed3ca7c",
+          "n_rows": 98
+        },
+        {
+          "suite": "psy_empathy",
+          "path": "eval/results/results_psy_empathy__glm53_flash.jsonl",
+          "sha256": "84dc6906bda4f16f44657d764c52e605cb009fc287fc71fd4329a43ebc3e9a17",
+          "n_rows": 199
+        },
+        {
+          "suite": "psy_support",
+          "path": "eval/results/results_psy_support__glm53_flash.jsonl",
+          "sha256": "3d1e182c3ffa28abefefe5eb972a96211b8accd63faac295d868a03cbcb84021",
+          "n_rows": 150
+        },
+        {
+          "suite": "risk_crisis",
+          "path": "eval/results/results_risk_crisis__glm53_flash.jsonl",
+          "sha256": "8acdf62debb85a8e711cfec1eac8252582ce2c40af6fb4f3d1938eb0bb7d4c91",
+          "n_rows": 1041
+        },
+        {
+          "suite": "risk_response",
+          "path": "eval/results/results_risk_response__glm53_flash.jsonl",
+          "sha256": "a21a5a2a9c3e6b1fe64e6de1463db5521f7e6f8c0cfa07179af6c15945ec2c60",
+          "n_rows": 617
+        }
+      ],
+      "task_files": [
+        {
+          "suite": "elder_refusal",
+          "path": "eval/data/tasks_elder_refusal.jsonl",
+          "sha256": "4ec17821bced1d1f41c1c358db6766ce6d402c205f8beeca9cab3fc4c01dbdcf",
+          "n_tasks": 500
+        },
+        {
+          "suite": "elder_safety",
+          "path": "eval/data/tasks_elder_safety.jsonl",
+          "sha256": "5fb355079bad6c17e98ac4dba2836aa3c4bfc00568a036169cf25120dfa63ec1",
+          "n_tasks": 500
+        },
+        {
+          "suite": "health_calc",
+          "path": "eval/data/tasks_health_calc.jsonl",
+          "sha256": "90efc620d5bdcd6378972b5acb7b4054b3155db30b4a716a142d15f95ed2c304",
+          "n_tasks": 200
+        },
+        {
+          "suite": "health_hallu",
+          "path": "eval/data/tasks_health_hallu.jsonl",
+          "sha256": "75415398693d5de21dceebdaeba720f394085502ee8182eb0b3a733c8536e245",
+          "n_tasks": 300
+        },
+        {
+          "suite": "health_ref",
+          "path": "eval/data/tasks_health_ref.jsonl",
+          "sha256": "eee95f57f46c0859f74471e94d4b0ffbe32d3b98263bd69673719d4bad4ab641",
+          "n_tasks": 400
+        },
+        {
+          "suite": "psy_calibration",
+          "path": "eval/data/tasks_psy_calibration.jsonl",
+          "sha256": "9fdc9626d0ad67f360d22cb8c15a56d98c86bed8ab25abc4a1360120743981cb",
+          "n_tasks": 97
+        },
+        {
+          "suite": "psy_empathy",
+          "path": "eval/data/tasks_psy_empathy.jsonl",
+          "sha256": "a2e932cdfe62412580d6985a377a87eef5beef548abdd5e9114da6059ad5ad2c",
+          "n_tasks": 197
+        },
+        {
+          "suite": "psy_support",
+          "path": "eval/data/tasks_psy_support.jsonl",
+          "sha256": "b9c3263c615456ca23f8b1a62689ee2933a0bfc7c0aa0cef7e22853a63944611",
+          "n_tasks": 150
+        },
+        {
+          "suite": "risk_crisis",
+          "path": "eval/data/tasks_risk_crisis.jsonl",
+          "sha256": "33aed7306419751d0b21d29ca0a84199b6943153335c44e150a2291691d11c64",
+          "n_tasks": 1008
+        },
+        {
+          "suite": "risk_response",
+          "path": "eval/data/tasks_risk_response.jsonl",
+          "sha256": "21e062181db0fbd9d665241a5207bd76fdceee1b63c3630d06980f68cc151026",
+          "n_tasks": 608
+        }
+      ]
+    },
+    "corrected_results": [
+      {
+        "path": "eval/results/scorer_1_1/results_elder_refusal__glm53_flash.jsonl",
+        "sha256": "5a4b8357fe22a17f56cf81fab2e6763a24a9c6bb2af9824c00694038fe7e586f",
+        "n_rows": 554
+      },
+      {
+        "path": "eval/results/scorer_1_1/results_elder_safety__glm53_flash.jsonl",
+        "sha256": "a32374891a889b61cd19eea53671282bee94acaf483375aead5bdc400aebcafd",
+        "n_rows": 541
+      },
+      {
+        "path": "eval/results/scorer_1_1/results_health_calc__glm53_flash.jsonl",
+        "sha256": "498da333c6a6453642bfc276fc1527c4251c2b9799cce977910e2ed70f10af11",
+        "n_rows": 207
+      },
+      {
+        "path": "eval/results/scorer_1_1/results_health_hallu__glm53_flash.jsonl",
+        "sha256": "0c7bdad0b4dcb814eda98f133745b5085692d7fa4f1a6cbc0e21c05e089277be",
+        "n_rows": 300
+      },
+      {
+        "path": "eval/results/scorer_1_1/results_health_ref__glm53_flash.jsonl",
+        "sha256": "6f151f4b73dfc67a201e3d2244171cf4a5a43748a468be1f732b1c62df766d2a",
+        "n_rows": 437
+      },
+      {
+        "path": "eval/results/scorer_1_1/results_psy_calibration__glm53_flash.jsonl",
+        "sha256": "49e7a926c84da418c1de1ad68dfcc46cbed6e5092f8f8ab4b5ffec5889eec236",
+        "n_rows": 98
+      },
+      {
+        "path": "eval/results/scorer_1_1/results_psy_empathy__glm53_flash.jsonl",
+        "sha256": "ed0371a8629d4a19fe7a0b7c770464c039a7df9120d72d79fac1bea86ae38fe8",
+        "n_rows": 199
+      },
+      {
+        "path": "eval/results/scorer_1_1/results_psy_support__glm53_flash.jsonl",
+        "sha256": "a12e68b7ba5a5d4bbebe714194deea3ca1df7829bf2c4144f63edf15c3095b1a",
+        "n_rows": 150
+      },
+      {
+        "path": "eval/results/scorer_1_1/results_risk_crisis__glm53_flash.jsonl",
+        "sha256": "f28c81763ea73a2d37adac06f4be018e65f6d855c2510dec5fa3489faaab5fc8",
+        "n_rows": 1041
+      },
+      {
+        "path": "eval/results/scorer_1_1/results_risk_response__glm53_flash.jsonl",
+        "sha256": "c16db06a9c96f19bbe58d9b612b8fed8152181c870d888394f6d4c7dc34c6b7c",
+        "n_rows": 617
+      }
+    ],
+    "gates": {
+      "overall": "INSUFFICIENT",
+      "coverage": "INSUFFICIENT",
+      "secondary_response_crisis": "OK"
+    }
+  },
+  "kind": "report",
+  "report_id": "glm53_flash_scorer1.1_20260925_013512",
+  "derived_from_run": null
+}

@@ -1,0 +1,37 @@
+{
+  "note": "判分回归门禁的期望基线。SCORER_VERSION / RULE_VERSION 未变时，rescore 的重算结果必须与下列报告逐字段一致；v1 人格结果已在 H8 删除。",
+  "tol": 0.01,
+  "subjects": [
+    {
+      "subject": "glm53_flash",
+      "baseline_report": "scorer_1_1/report_glm53_flash_scorer1.1_20260925_013512.json",
+      "n_rows": 3928,
+      "expected_note": "历史 GLM 列；32 条网关失败行不进入成功结果。"
+    },
+    {
+      "subject": "qwen35_4b_base",
+      "baseline_report": "scorer_1_1/report_qwen35_4b_base_scorer1.1_20260925_015042.json",
+      "n_rows": 3960
+    },
+    {
+      "subject": "qwen35_4b_deploy_v2",
+      "baseline_report": "scorer_1_1/report_qwen35_4b_deploy_v2_scorer1.1_20260925_013735.json",
+      "n_rows": 3960
+    }
+  ],
+  "removed": {
+    "v1_deploy": "H8：v1 人格、结果、报告和 manifest 已删除。",
+    "v1_ablation": "H8：v1 消融已删除；后续以 v2 消融重建。"
+  },
+  "last_gate_run": {
+    "date": "2026-09-30",
+    "verdict": "REGRESSION_ALL_PASS",
+    "hard_diffs": 0,
+    "soft_diffs": 0,
+    "subjects": [
+      "glm53_flash",
+      "qwen35_4b_base",
+      "qwen35_4b_deploy_v2"
+    ]
+  }
+}

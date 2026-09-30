@@ -1,0 +1,33 @@
+# ElderBench 评测 harness 依赖（评测端）
+#
+# 适用环境：
+#   1. 服务器 .venv（/data/wangzeyu/ElderBench/.venv，Linux + Python 3.11）：生产跑批环境
+#   2. 本机 Windows Python 3.12：数据集构建与离线重判分
+#
+# 安装：
+#   python -m pip install -r requirements.txt
+#
+# 版本来源：2026-09-21 对上述两个环境的实际安装盘点（*.dist-info 目录名）。
+#
+# 依赖构成说明：
+#   - 代码直接 import：httpx（model_client）、pyyaml（adapters/run_eval）、
+#     jieba 与 nltk（scoring 的中文分词与 BLEU）、pandas（adapters 读取数据集）
+#   - 传递依赖一并钉住：numpy（pandas）、regex（nltk）
+#   - pyarrow 与 openpyxl 为 adapters.py 读取 parquet / xlsx 所必需。
+#     服务器 .venv 当前缺这两个包，因此 build 无法在服务器执行；
+#     既有 eval/data/tasks_*.jsonl 实际是在本机 Windows 上构建的。
+#     若要在服务器重建数据集，需先补装本文件全部依赖。
+#
+# 注意：既有 tasks_*.jsonl 由 pandas 3.0.5 构建，本文件钉的是服务器侧的 3.0.6。
+# 两者若在抽样读入行为上有差异，重建产物可能与已入库的 tasks 文件不一致。
+# 因此 eval/data/ 下的 tasks_*.jsonl 视为冻结产物，不做无谓重建。
+
+httpx==0.28.1
+pyyaml==6.0.3
+jieba==0.42.1
+nltk==3.10.3
+pandas==3.0.6
+numpy==2.4.6
+regex==2026.9.10
+pyarrow==25.0.1
+openpyxl==3.1.5

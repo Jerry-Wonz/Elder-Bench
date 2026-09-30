@@ -1,0 +1,74 @@
+# ============================================================
+# ElderBench .gitignore
+#
+# 原则：入库「无法由脚本恢复」与「体积小」的资产。
+#   入库：代码、文档、配置、评测数据集（eval/data）、评测结果（eval/results）、
+#         数据来源说明（benchmark/external 下的 README）、LoRA adapter 顶层产物
+#   忽略：模型权重、外部数据集原始档、训练中间检查点、虚拟环境（均可恢复）
+# 环境搭建与运维细节见服务器上的内部文档（不入库，见文末「内部工作文档」）
+# ============================================================
+
+# ---------------- 密钥与本地端点配置 ----------------
+# eval/.env 含网关 API key，严禁入库
+.env
+
+# ---------------- Python ----------------
+__pycache__/
+*.py[cod]
+build/
+dist/
+*.egg-info/
+
+# ---------------- 虚拟环境 ----------------
+# Linux venv，本机 Windows 无法激活，且可由 requirements*.txt 重建
+.venv/          # harness 端（requirements.txt）
+.venv-vllm/     # 推理服务与 LoRA 合并（requirements-vllm.txt）
+.venv-web/      # 网页控制台（requirements-web.txt）
+venv/
+env/
+
+# ---------------- 模型权重（约 18GB）----------------
+# 基座可由上游下载；合并产物可由 scripts/merge_lora.py 从基座 + adapter 重建
+/models/
+
+# ---------------- 训练中间产物 ----------------
+# 保留 outputs/qwen35_4b_lora_v3.2/ 顶层（adapter 与训练配置不可恢复），
+# 仅忽略分步检查点（每个含 130MB optimizer.pt，共约 430MB）
+/outputs/**/checkpoint-*/
+
+# ---------------- 外部数据集原始档（约 2.2GB）----------------
+# 全部为公开数据集，可由 benchmark/external/README.md 记载的来源重新下载。
+# 但其中的说明文档是该目录唯一的来源与许可记录，需入库。
+/benchmark/external/**
+!/benchmark/external/**/
+!/benchmark/external/**/*.md
+# SoulChat/official 是上游仓库的完整克隆（目录内含 .git），git 只会把它记录成
+# 一个无法解析的 submodule 引用；该目录同时承载 865MB 官方原始档。
+# 故显式排除，其来源与哈希比对结论见 benchmark/external/SoulChat/README_mirror.md
+/benchmark/external/SoulChat/official/
+
+# ---------------- 评测的临时产物 ----------------
+# smoke 干跑输出（每次重跑都变）与 --limit 调试残留，非评测证据
+/eval/results/_dryrun/
+/eval/results/_*.jsonl
+
+# ---------------- 网盘同步残留 ----------------
+.WeDrive
+.Temp/
+
+# ---------------- 内部工作文档（不入库）----------------
+# 过程性/内部文档，不随仓库发布。逐条列名而不用 docs/* 通配：
+# docs/ 下大部分文档（流程、数据说明、模型对比、横向测评方案）需要入库。
+docs/环境说明.md
+docs/评测修正与优化.md
+docs/评测工具链设计.md
+docs/评测WebUI设计.md
+docs/评测控制台使用手册.md
+docs/三维度评测迁移与建设规划.md
+
+# ---------------- 编辑器与系统 ----------------
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+desktop.ini

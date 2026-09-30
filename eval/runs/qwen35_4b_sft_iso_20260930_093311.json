@@ -1,0 +1,80 @@
+{
+  "run_id": "qwen35_4b_sft_iso_20260930_093311",
+  "subject": "qwen35_4b_sft_iso",
+  "group": "iso-t0-mt8192",
+  "tags": [
+    "sft",
+    "iso",
+    "no-persona"
+  ],
+  "decoding": {
+    "temperature": 0.0,
+    "max_tokens": 8192,
+    "top_p": 1.0,
+    "seed": 20260910,
+    "presence_penalty": 0.0,
+    "frequency_penalty": 0.0,
+    "stop": null,
+    "extra_body": {}
+  },
+  "model": {
+    "model_path": "models/Qwen3.5-4B-sft-v3.2",
+    "model_revision": "local",
+    "tokenizer_path": "models/Qwen3.5-4B-sft-v3.2",
+    "tokenizer_sha256": "06b9509352d2af50381ab2247e083b80d32d5c0aba91c272ca9ff729b6a0e523",
+    "model_index_sha256": null,
+    "model_config_sha256": "b4890ee52ceabfbe93ea3ee91c1284c01b39f08b067f34677cce117294c212ac",
+    "max_model_len": 12288
+  },
+  "endpoint": {
+    "base_url": "http://127.0.0.1:8000/v1",
+    "model": "qwen3.5-4b-ft"
+  },
+  "system_prompt": {
+    "file": null,
+    "sha256": null
+  },
+  "config_file": "eval/config.yaml",
+  "config_sha256": "8c95d0e77197efc69d77764da51fa0b31cec1a4051a40c855c9d8c7956f05231",
+  "config_files": [
+    {
+      "path": "eval/config.yaml",
+      "sha256": "8c95d0e77197efc69d77764da51fa0b31cec1a4051a40c855c9d8c7956f05231"
+    }
+  ],
+  "data": {
+    "adapter_version": "2.0",
+    "sampling_seed": 20260910,
+    "suites": {
+      "health_hallu": {
+        "n": 300,
+        "sha256": "75415398693d5de21dceebdaeba720f394085502ee8182eb0b3a733c8536e245"
+      }
+    }
+  },
+  "scoring": {
+    "scorer_version": "1.1",
+    "rule_version": "1.1",
+    "renderer_version": "1.0"
+  },
+  "code": {
+    "git_commit": "bfac6a666953fc62d19e1ccbcfe21fcc3000489e",
+    "dirty": true
+  },
+  "timing": {
+    "started": "2026-09-30 09:33:11",
+    "finished": "2026-09-30 09:35:39"
+  },
+  "outcome": {
+    "n_tasks": 300,
+    "done_before": 5,
+    "n_pending": 295,
+    "ok": 295,
+    "err": 0,
+    "elapsed_s": 148.2,
+    "suite": "health_hallu",
+    "archived": true,
+    "limited": false
+  },
+  "kind": "run"
+}

@@ -1,0 +1,85 @@
+# 网页评测控制台的依赖（设计 §8.1：独立的 .venv-web）。
+#
+# 与 requirements.txt（评测 harness 端）分开的原因：
+#   - 控制台进程只需要 streamlit / altair / pandas / pyyaml 这一族；
+#   - harness 侧需要 jieba / nltk / httpx，而控制台**不导入**它们（设计 §4.6
+#     的依赖边界）。混装会让"控制台有没有误 import scoring"这件事从依赖层面
+#     就无法验证。
+#
+# 装法（两端不同，勿照抄）：
+#   服务器（部署目标，Linux）：系统 python3 既无 ensurepip 也无 pip，`python -m venv`
+#     在该机器上直接失败。用仓库同款的 uv，并显式指定系统解释器：
+#       ~/.local/bin/uv venv --python /usr/bin/python3.14 --seed .venv-web
+#       ~/.local/bin/uv pip install --python .venv-web/bin/python -r requirements-web.txt
+#   本机（Windows，自测）：
+#       python -m venv .venv-web
+#       .venv-web\Scripts\pip install -r requirements-web.txt
+#
+# 解释器版本要求 >= 3.12：numpy==2.5.3 的 requires-python 即为 >=3.12，
+# 因此 uv 管理的 CPython 3.11.16 不满足这套钉版（实测解析失败）。
+# 服务器实测组合为系统 CPython 3.14.4，安装日志只有 `+ 包名==版本` 行，未触发源码构建。
+#
+# 全部版本为实测可用的组合，由已安装环境的依赖闭包导出。下面的分组标出每一项
+# 是被谁引入的，升级时据此判断影响面。
+
+
+# ---- 直接依赖 ----
+altair==6.3.0
+pandas==3.0.5
+PyYAML==6.0.3
+streamlit==1.64.0
+
+# ---- Jinja2 引入 ----
+MarkupSafe==3.0.3
+
+# ---- altair 引入 ----
+Jinja2==3.1.6
+jsonschema==4.26.0
+narwhals==2.26.0
+
+# ---- anyio 引入 ----
+typing_extensions==4.16.0
+
+# ---- jsonschema 引入 ----
+attrs==26.1.0
+jsonschema-specifications==2025.9.1
+referencing==0.37.0
+rpds-py==2026.6.3
+
+# ---- pandas 引入 ----
+python-dateutil==2.9.0.post0
+tzdata==2026.3
+
+# ---- python-dateutil 引入 ----
+six==1.17.0
+
+# ---- requests 引入 ----
+certifi==2026.7.22
+charset-normalizer==3.5.1
+idna==3.19
+urllib3==2.7.0
+
+# ---- streamlit 引入 ----
+anyio==4.15.1
+click==8.5.0
+httptools==0.8.0
+itsdangerous==2.2.0
+numpy==2.5.3
+packaging==26.3
+pillow==12.3.0
+protobuf==7.36.2
+pyarrow==25.0.1
+pydeck==0.9.3
+python-multipart==0.0.32
+requests==2.34.2
+starlette==1.6.0
+toml==0.10.2
+uvicorn==0.53.0
+watchdog==6.0.0
+websockets==16.1.1
+
+# ---- uvicorn 引入 ----
+h11==0.16.0
+
+# 共 38 项。
+# 注意 watchdog 的 marker 是 platform_system != "Darwin"，Linux 与 Windows 均需安装。

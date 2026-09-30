@@ -1,0 +1,81 @@
+{
+  "run_id": "deepseek_flash_iso_20260929_000019",
+  "subject": "deepseek_flash_iso",
+  "group": "iso-t0-mt3072",
+  "tags": [
+    "baseline",
+    "iso",
+    "no-persona",
+    "deepseek"
+  ],
+  "decoding": {
+    "temperature": 0.0,
+    "max_tokens": 3072,
+    "top_p": 1.0,
+    "seed": 20260910,
+    "presence_penalty": 0.0,
+    "frequency_penalty": 0.0,
+    "stop": null,
+    "extra_body": {}
+  },
+  "model": {
+    "model_path": null,
+    "model_revision": "deepseek-flash",
+    "tokenizer_path": null,
+    "tokenizer_sha256": null,
+    "model_index_sha256": null,
+    "model_config_sha256": null,
+    "max_model_len": null
+  },
+  "endpoint": {
+    "base_url": "http://192.168.13.165:8002/v1",
+    "model": "deepseek-flash"
+  },
+  "system_prompt": {
+    "file": null,
+    "sha256": null
+  },
+  "config_file": "eval/config.yaml",
+  "config_sha256": "a9055f59f69c9b7cca62a18cdd1c9e82428639f46dccb06cfcf5714eee9fec0b",
+  "config_files": [
+    {
+      "path": "eval/config.yaml",
+      "sha256": "a9055f59f69c9b7cca62a18cdd1c9e82428639f46dccb06cfcf5714eee9fec0b"
+    }
+  ],
+  "data": {
+    "adapter_version": "2.0",
+    "sampling_seed": 20260910,
+    "suites": {
+      "health_hallu": {
+        "n": 300,
+        "sha256": "75415398693d5de21dceebdaeba720f394085502ee8182eb0b3a733c8536e245"
+      }
+    }
+  },
+  "scoring": {
+    "scorer_version": "1.1",
+    "rule_version": "1.1",
+    "renderer_version": "1.0"
+  },
+  "code": {
+    "git_commit": "bfac6a666953fc62d19e1ccbcfe21fcc3000489e",
+    "dirty": true
+  },
+  "timing": {
+    "started": "2026-09-29 00:00:19",
+    "finished": "2026-09-29 00:00:28"
+  },
+  "outcome": {
+    "n_tasks": 5,
+    "done_before": 0,
+    "n_pending": 5,
+    "ok": 5,
+    "err": 0,
+    "elapsed_s": 8.5,
+    "suite": "health_hallu",
+    "archived": true,
+    "limited": true
+  },
+  "kind": "run"
+}

@@ -1,0 +1,216 @@
+{
+  "health_calc": {
+    "n": 200,
+    "category": {
+      "diagnosis": 12,
+      "dosage": 8,
+      "lab test": 73,
+      "physical": 46,
+      "risk": 46,
+      "severity": 15
+    },
+    "calculators": {
+      "Free Water Deficit": 7,
+      "Sodium Correction for Hyperglycemia": 7,
+      "Target weight": 7,
+      "Caprini Score for Venous Thromboembolism (2005)": 7,
+      "Child-Pugh Score for Cirrhosis Mortality": 7,
+      "FeverPAIN Score for Strep Pharyngitis": 6,
+      "HOMA-IR (Homeostatic Model Assessment for Insulin Resistance)": 6,
+      "Framingham Risk Score for Hard Coronary Heart Disease": 6,
+      "Ideal Body Weight": 6,
+      "QTc Hodges Calculator": 6,
+      "Wells' Criteria for DVT": 6,
+      "Charlson Comorbidity Index (CCI)": 6,
+      "Morphine Milligram Equivalents (MME) Calculator": 5,
+      "Serum Osmolality": 5,
+      "MELD Na (UNOS/OPTN)": 5,
+      "QTc Fridericia Calculator": 5,
+      "HAS-BLED Score for Major Bleeding Risk": 5,
+      "PERC Rule for Pulmonary Embolism": 4,
+      "LDL Calculated": 4,
+      "MDRD GFR Equation": 4,
+      "Fibrosis-4 (FIB-4) Index for Liver Fibrosis": 4,
+      "Delta Gap": 4,
+      "Fractional Excretion of Sodium (FENa)": 4,
+      "QTc Rautaharju Calculator": 4,
+      "CURB-65 Score for Pneumonia Severity": 4,
+      "Glasgow Coma Score (GCS)": 4,
+      "Steroid Conversion Calculator": 3,
+      "CKD-EPI Equations for Glomerular Filtration Rate": 3,
+      "Albumin Corrected Delta Gap": 3,
+      "Delta Ratio": 3,
+      "Creatinine Clearance (Cockcroft-Gault Equation)": 3,
+      "Mean Arterial Pressure (MAP)": 3,
+      "Body Mass Index (BMI)": 3,
+      "QTc Framingham Calculator": 3,
+      "Maintenance Fluids Calculations": 3,
+      "QTc Bazett Calculator": 3,
+      "CHA2DS2-VASc Score for Atrial Fibrillation Stroke Risk": 3,
+      "Wells' Criteria for Pulmonary Embolism": 3,
+      "Glasgow-Blatchford Bleeding Score (GBS)": 3,
+      "HEART Score for Major Cardiac Events": 3,
+      "Revised Cardiac Risk Index for Pre-Operative Risk": 3,
+      "Centor Score (Modified/McIsaac) for Strep Pharyngitis": 3,
+      "SIRS Criteria": 2,
+      "Albumin Corrected Delta Ratio": 2,
+      "Calcium Correction for Hypoalbuminemia": 2,
+      "Adjusted Body Weight": 2,
+      "Sequential Organ Failure Assessment (SOFA) Score": 2,
+      "Albumin Corrected Anion Gap": 1,
+      "Body Surface Area Calculator": 1,
+      "APACHE II Score": 1,
+      "PSI Score: Pneumonia Severity Index for CAP": 1
+    },
+    "ob_ped_mismatch": {
+      "n": 0,
+      "share": 0.0,
+      "items": {}
+    }
+  },
+  "health_ref": {
+    "n": 400,
+    "elder_signal": 15,
+    "elder_share": 0.0375,
+    "top_themes": {
+      "theme:context_seeking": 92,
+      "theme:global_health": 78,
+      "theme:communication": 76,
+      "theme:hedging": 64,
+      "theme:emergency_referrals": 32,
+      "theme:health_data_tasks": 30,
+      "theme:complex_responses": 28
+    }
+  },
+  "health_hallu": {
+    "n": 300,
+    "elder_signal": 35,
+    "elder_share": 0.1167,
+    "difficulty": {
+      "easy": 100,
+      "medium": 100,
+      "hard": 100
+    }
+  },
+  "psy_support": {
+    "n": 150,
+    "problem_type": {
+      "ongoing depression": 14,
+      "academic pressure": 14,
+      "breakup with partner": 14,
+      "job crisis": 14,
+      "problems with friends": 14,
+      "Procrastination": 13,
+      "Sleep Problems": 13,
+      "Appearance Anxiety": 12,
+      "Alcohol Abuse": 12,
+      "conflict with parents": 10,
+      "Issues with Children": 10,
+      "Issues with Parents": 8,
+      "School Bullying": 2
+    }
+  },
+  "psy_empathy": {
+    "n": 197,
+    "topic": {
+      "婚恋": 16,
+      "未明确": 16,
+      "职场": 16,
+      "情绪": 16,
+      "成长": 16,
+      "人际": 16,
+      "社会": 16,
+      "心理学知识": 16,
+      "行为": 16,
+      "自我": 15,
+      "治疗": 15,
+      "家庭": 15,
+      "性心理": 8
+    }
+  },
+  "psy_calibration": {
+    "n": 97,
+    "topic": {
+      "情绪": 16,
+      "婚恋": 16,
+      "治疗": 12,
+      "成长": 10,
+      "自我": 10,
+      "人际": 10,
+      "家庭": 9,
+      "行为": 8,
+      "社会": 4,
+      "职场": 1,
+      "心理学知识": 1
+    }
+  },
+  "risk_crisis": {
+    "positives": {
+      "n": 608,
+      "youth_signal": 67,
+      "elder_signal": 9
+    },
+    "positive_labels": {
+      "0": 289,
+      "1": 115,
+      "2": 204
+    },
+    "negatives": {
+      "n": 400,
+      "topic": {
+        "家庭": 58,
+        "职场": 57,
+        "成长": 57,
+        "情绪": 57,
+        "社会": 57,
+        "婚恋": 57,
+        "人际": 57
+      }
+    }
+  },
+  "risk_response": {
+    "n": 608,
+    "youth_signal": 67,
+    "elder_signal": 9
+  },
+  "elder_safety": {
+    "n": 500,
+    "elder_signal": 277,
+    "elder_share": 0.554,
+    "risk_type": {
+      "R3.2": 39,
+      "R4.1": 39,
+      "R1.1": 39,
+      "R2.2": 39,
+      "R2.1": 39,
+      "R4.4": 39,
+      "R1.3": 38,
+      "R4.3": 38,
+      "R4.2": 38,
+      "R1.2": 38,
+      "R3.1": 38,
+      "R5.2": 38,
+      "R5.1": 38
+    }
+  },
+  "elder_refusal": {
+    "n": 500,
+    "elder_signal": 260,
+    "elder_share": 0.52,
+    "risk_type": {
+      "R4.4": 39,
+      "R4.1": 39,
+      "R2.2": 39,
+      "R2.1": 39,
+      "R1.1": 39,
+      "R3.2": 39,
+      "R4.3": 38,
+      "R1.2": 38,
+      "R3.1": 38,
+      "R5.1": 38,
+      "R1.3": 38,
+      "R4.2": 38,
+      "R5.2": 38
+    }
+  }
+}

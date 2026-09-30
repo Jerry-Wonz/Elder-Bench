@@ -1,0 +1,250 @@
+{
+  "run_id": "qwen35_4b_deploy_v2_r3_report_20260930_101916",
+  "subject": "qwen35_4b_deploy_v2_r3",
+  "group": "deploy-replicate-t015-mt3072",
+  "tags": [
+    "sft",
+    "persona-v2",
+    "deploy-replicate",
+    "rep-3"
+  ],
+  "decoding": {
+    "temperature": 0.15,
+    "max_tokens": 3072,
+    "top_p": null,
+    "seed": 20260910,
+    "presence_penalty": null,
+    "frequency_penalty": null,
+    "stop": null,
+    "extra_body": null
+  },
+  "model": {
+    "model_path": "models/Qwen3.5-4B-sft-v3.2",
+    "model_revision": "local",
+    "tokenizer_path": "models/Qwen3.5-4B-sft-v3.2",
+    "tokenizer_sha256": "06b9509352d2af50381ab2247e083b80d32d5c0aba91c272ca9ff729b6a0e523",
+    "model_index_sha256": null,
+    "model_config_sha256": "b4890ee52ceabfbe93ea3ee91c1284c01b39f08b067f34677cce117294c212ac",
+    "max_model_len": 12288
+  },
+  "endpoint": {
+    "base_url": "http://127.0.0.1:8000/v1",
+    "model": "qwen3.5-4b-ft"
+  },
+  "system_prompt": {
+    "file": "personas/xiaonuan_chat_4b_v2.txt",
+    "sha256": "f66acbcc57f07f63d4b5f960fb4a2f5647930efa1806bcff731d81422064a3da"
+  },
+  "config_file": "eval/config.deploy_replicates.yaml",
+  "config_sha256": "417ed955157c6457da7ccfec0eb2e547e5e6a503cfd699247001e4654372a779",
+  "config_files": [
+    {
+      "path": "eval/config.deploy_replicates.yaml",
+      "sha256": "417ed955157c6457da7ccfec0eb2e547e5e6a503cfd699247001e4654372a779"
+    },
+    {
+      "path": "eval/config.deploy.yaml",
+      "sha256": "773ebe1c7a83dfb323602b7433aad17d729347e830f77b63771d63d7f45138b9"
+    },
+    {
+      "path": "eval/config.yaml",
+      "sha256": "8c95d0e77197efc69d77764da51fa0b31cec1a4051a40c855c9d8c7956f05231"
+    }
+  ],
+  "data": {
+    "adapter_version": "2.0",
+    "sampling_seed": 20260910,
+    "suites": {
+      "elder_refusal": {
+        "n": 500,
+        "sha256": "4ec17821bced1d1f41c1c358db6766ce6d402c205f8beeca9cab3fc4c01dbdcf"
+      },
+      "elder_safety": {
+        "n": 500,
+        "sha256": "5fb355079bad6c17e98ac4dba2836aa3c4bfc00568a036169cf25120dfa63ec1"
+      },
+      "health_calc": {
+        "n": 200,
+        "sha256": "90efc620d5bdcd6378972b5acb7b4054b3155db30b4a716a142d15f95ed2c304"
+      },
+      "health_hallu": {
+        "n": 300,
+        "sha256": "75415398693d5de21dceebdaeba720f394085502ee8182eb0b3a733c8536e245"
+      },
+      "health_ref": {
+        "n": 400,
+        "sha256": "eee95f57f46c0859f74471e94d4b0ffbe32d3b98263bd69673719d4bad4ab641"
+      },
+      "psy_calibration": {
+        "n": 97,
+        "sha256": "9fdc9626d0ad67f360d22cb8c15a56d98c86bed8ab25abc4a1360120743981cb"
+      },
+      "psy_empathy": {
+        "n": 197,
+        "sha256": "a2e932cdfe62412580d6985a377a87eef5beef548abdd5e9114da6059ad5ad2c"
+      },
+      "psy_support": {
+        "n": 150,
+        "sha256": "b9c3263c615456ca23f8b1a62689ee2933a0bfc7c0aa0cef7e22853a63944611"
+      },
+      "risk_crisis": {
+        "n": 1008,
+        "sha256": "33aed7306419751d0b21d29ca0a84199b6943153335c44e150a2291691d11c64"
+      },
+      "risk_response": {
+        "n": 608,
+        "sha256": "21e062181db0fbd9d665241a5207bd76fdceee1b63c3630d06980f68cc151026"
+      }
+    }
+  },
+  "scoring": {
+    "scorer_version": "1.1",
+    "rule_version": "1.1",
+    "renderer_version": "1.0"
+  },
+  "code": {
+    "git_commit": "bfac6a666953fc62d19e1ccbcfe21fcc3000489e",
+    "dirty": true
+  },
+  "timing": {
+    "started": "2026-09-30 10:19:16",
+    "finished": "2026-09-30 10:19:17"
+  },
+  "outcome": {
+    "report_id": "qwen35_4b_deploy_v2_r3_report_20260930_101916",
+    "source": {
+      "result_files": [
+        {
+          "suite": "elder_refusal",
+          "path": "eval/results/results_elder_refusal__qwen35_4b_deploy_v2_r3.jsonl",
+          "sha256": "9b633edb8c4ae24e22b2a7e63f620e8c020cd8d1225e900360ffc82ef43fc1b0",
+          "n_rows": 500
+        },
+        {
+          "suite": "elder_safety",
+          "path": "eval/results/results_elder_safety__qwen35_4b_deploy_v2_r3.jsonl",
+          "sha256": "2544b61ec71d27ff5e05985f494c06a9bb9b5856b7ba90bc7708edfb1af010b8",
+          "n_rows": 500
+        },
+        {
+          "suite": "health_calc",
+          "path": "eval/results/results_health_calc__qwen35_4b_deploy_v2_r3.jsonl",
+          "sha256": "d124b429fa5b48f4f80af430618b25953e5fd19158a06bca23dffea444f8bbe8",
+          "n_rows": 200
+        },
+        {
+          "suite": "health_hallu",
+          "path": "eval/results/results_health_hallu__qwen35_4b_deploy_v2_r3.jsonl",
+          "sha256": "50e864664f9fb52806b4629044ba78740102e3d0de6be3a97bd94bf8a75e3aaa",
+          "n_rows": 300
+        },
+        {
+          "suite": "health_ref",
+          "path": "eval/results/results_health_ref__qwen35_4b_deploy_v2_r3.jsonl",
+          "sha256": "371d49d9649b535135207e704a2f3213fffd5676a1ec405207ddf6c77a9d3773",
+          "n_rows": 400
+        },
+        {
+          "suite": "psy_calibration",
+          "path": "eval/results/results_psy_calibration__qwen35_4b_deploy_v2_r3.jsonl",
+          "sha256": "0ad54b9c3d3faac98eb89e9af89508d2400cc946608b9870cc646c52bc6a83ed",
+          "n_rows": 97
+        },
+        {
+          "suite": "psy_empathy",
+          "path": "eval/results/results_psy_empathy__qwen35_4b_deploy_v2_r3.jsonl",
+          "sha256": "05ddb7a1900845560b77a5edbb49adabe9ac122b9aa436763f86e39a0cb3c2d7",
+          "n_rows": 197
+        },
+        {
+          "suite": "psy_support",
+          "path": "eval/results/results_psy_support__qwen35_4b_deploy_v2_r3.jsonl",
+          "sha256": "e9165d6c485e43addf72f2d7f823123101ffba267934f5cf93d6c52459a2cfff",
+          "n_rows": 150
+        },
+        {
+          "suite": "risk_crisis",
+          "path": "eval/results/results_risk_crisis__qwen35_4b_deploy_v2_r3.jsonl",
+          "sha256": "a1b039a21cc76a6781db7db48864e6310bcb8f779a0028a019319ccdfc531ffb",
+          "n_rows": 1008
+        },
+        {
+          "suite": "risk_response",
+          "path": "eval/results/results_risk_response__qwen35_4b_deploy_v2_r3.jsonl",
+          "sha256": "ef8423254d1099b4932ae6e4cdf6b8dd80f13195e05f628267de8e4d3b4a3e52",
+          "n_rows": 608
+        }
+      ],
+      "task_files": [
+        {
+          "suite": "elder_refusal",
+          "path": "eval/data/tasks_elder_refusal.jsonl",
+          "sha256": "4ec17821bced1d1f41c1c358db6766ce6d402c205f8beeca9cab3fc4c01dbdcf",
+          "n_tasks": 500
+        },
+        {
+          "suite": "elder_safety",
+          "path": "eval/data/tasks_elder_safety.jsonl",
+          "sha256": "5fb355079bad6c17e98ac4dba2836aa3c4bfc00568a036169cf25120dfa63ec1",
+          "n_tasks": 500
+        },
+        {
+          "suite": "health_calc",
+          "path": "eval/data/tasks_health_calc.jsonl",
+          "sha256": "90efc620d5bdcd6378972b5acb7b4054b3155db30b4a716a142d15f95ed2c304",
+          "n_tasks": 200
+        },
+        {
+          "suite": "health_hallu",
+          "path": "eval/data/tasks_health_hallu.jsonl",
+          "sha256": "75415398693d5de21dceebdaeba720f394085502ee8182eb0b3a733c8536e245",
+          "n_tasks": 300
+        },
+        {
+          "suite": "health_ref",
+          "path": "eval/data/tasks_health_ref.jsonl",
+          "sha256": "eee95f57f46c0859f74471e94d4b0ffbe32d3b98263bd69673719d4bad4ab641",
+          "n_tasks": 400
+        },
+        {
+          "suite": "psy_calibration",
+          "path": "eval/data/tasks_psy_calibration.jsonl",
+          "sha256": "9fdc9626d0ad67f360d22cb8c15a56d98c86bed8ab25abc4a1360120743981cb",
+          "n_tasks": 97
+        },
+        {
+          "suite": "psy_empathy",
+          "path": "eval/data/tasks_psy_empathy.jsonl",
+          "sha256": "a2e932cdfe62412580d6985a377a87eef5beef548abdd5e9114da6059ad5ad2c",
+          "n_tasks": 197
+        },
+        {
+          "suite": "psy_support",
+          "path": "eval/data/tasks_psy_support.jsonl",
+          "sha256": "b9c3263c615456ca23f8b1a62689ee2933a0bfc7c0aa0cef7e22853a63944611",
+          "n_tasks": 150
+        },
+        {
+          "suite": "risk_crisis",
+          "path": "eval/data/tasks_risk_crisis.jsonl",
+          "sha256": "33aed7306419751d0b21d29ca0a84199b6943153335c44e150a2291691d11c64",
+          "n_tasks": 1008
+        },
+        {
+          "suite": "risk_response",
+          "path": "eval/data/tasks_risk_response.jsonl",
+          "sha256": "21e062181db0fbd9d665241a5207bd76fdceee1b63c3630d06980f68cc151026",
+          "n_tasks": 608
+        }
+      ]
+    },
+    "gates": {
+      "overall": "FAIL",
+      "coverage": "OK",
+      "secondary_response_crisis": "EXCEEDED"
+    }
+  },
+  "kind": "report",
+  "report_id": "qwen35_4b_deploy_v2_r3_report_20260930_101916",
+  "derived_from_run": null
+}

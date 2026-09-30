@@ -1,0 +1,31 @@
+# 历史结果追溯配置：只用于旧报告重算/审计，不进入默认 UI 和当前对比。
+extends: config.yaml
+
+subjects:
+  glm53_flash:
+    group: dec-t0-mt6144
+    tags:
+    - baseline
+    - api
+    - reasoning
+    base_url: env:EVAL_SUBJECT_BASE_URL
+    api_key: env:EVAL_SUBJECT_API_KEY
+    model: glm-5.3-flash
+    temperature: 0.0
+    max_tokens: 6144
+    system_prompt_file: null
+  qwen35_4b_base:
+    group: dec-t0-mt3072
+    tags:
+    - base
+    - no-persona
+    base_url: http://127.0.0.1:8000/v1
+    api_key: env:EVAL_SUBJECT_API_KEY
+    model: qwen3.5-4b
+    model_path: models/Qwen3.5-4B
+    tokenizer_path: models/Qwen3.5-4B
+    model_revision: local
+    max_model_len: 12288
+    temperature: 0.0
+    max_tokens: 3072
+    system_prompt_file: null

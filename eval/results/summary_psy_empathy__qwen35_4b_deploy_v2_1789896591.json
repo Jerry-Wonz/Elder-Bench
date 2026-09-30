@@ -1,0 +1,34 @@
+{
+  "n_results": 197,
+  "per_suite": {
+    "psy_empathy": {
+      "n": 197,
+      "rouge1": 20.32,
+      "rouge2": 3.11,
+      "rougeL": 13.08,
+      "bleu": 0.88,
+      "distinct1": 58.76,
+      "distinct2": 92.03,
+      "avg_sentence_len": 26.1218
+    }
+  },
+  "per_dimension": {
+    "psychological": {
+      "empathy_rougeL": 13.08
+    }
+  },
+  "redline": {
+    "crisis_miss_rate": null,
+    "grandguard_omit_rate": null,
+    "response_crisis_miss_rate": null,
+    "thresholds": {
+      "crisis_miss_rate_max": 5,
+      "grandguard_omit_rate_max": 30,
+      "response_crisis_miss_max": 5
+    }
+  },
+  "gates": {
+    "overall": "PASS",
+    "secondary_response_crisis": "OK"
+  }
+}

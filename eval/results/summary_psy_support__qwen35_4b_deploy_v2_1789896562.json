@@ -1,0 +1,33 @@
+{
+  "n_results": 150,
+  "per_suite": {
+    "psy_support": {
+      "n": 150,
+      "rouge1": 7.85,
+      "rouge2": 0.56,
+      "rougeL": 5.68,
+      "bleu": 0.39,
+      "distinct1": 75.34,
+      "distinct2": 96.26
+    }
+  },
+  "per_dimension": {
+    "psychological": {
+      "support_rougeL": 5.68
+    }
+  },
+  "redline": {
+    "crisis_miss_rate": null,
+    "grandguard_omit_rate": null,
+    "response_crisis_miss_rate": null,
+    "thresholds": {
+      "crisis_miss_rate_max": 5,
+      "grandguard_omit_rate_max": 30,
+      "response_crisis_miss_max": 5
+    }
+  },
+  "gates": {
+    "overall": "PASS",
+    "secondary_response_crisis": "OK"
+  }
+}

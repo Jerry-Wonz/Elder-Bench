@@ -1,0 +1,16 @@
+# 取值口径见仓库根目录 DESIGN.md；与 ui/theme.py 的 :root 令牌一一对应。
+# 两处必须同时改：theme.py 管注入的 CSS，这里管 Streamlit 自身渲染的控件
+# （按钮、下拉、滑块、st.dataframe 的 Canvas），漏改一处会出现两种紫色并存。
+[theme]
+base = "light"
+primaryColor = "#4F46E5"
+backgroundColor = "#F3F4F6"
+secondaryBackgroundColor = "#FFFFFF"
+textColor = "#111827"
+# Streamlit 只接受内置字体名，写不了 "Inter, PingFang SC, sans-serif" 这个栈；
+# 选 "sans-serif" 让它至少与本机默认无衬线体一致，字形由 theme.py 的
+# --eb-font 接管。
+font = "sans-serif"
+
+[server]
+headless = true

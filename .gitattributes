@@ -1,0 +1,33 @@
+# ============================================================
+# 换行符策略
+#
+# 背景：本仓库的产物横跨两个平台生成，字节层不一致且都必须原样保留：
+#   - CRLF：eval/data/tasks_*.jsonl（数据集在 Windows 上构建）、
+#           eval/results/*__glm53_flash.jsonl（glm 列走网关，在本机 Windows 跑）
+#   - LF  ：eval/results/*__qwen35_4b_*.jsonl（4B 两列在 Linux 服务器上跑）
+# 这些文件是评测证据，逐字节保留是可比性的前提。
+#
+# 同时本机 git 配置为 core.autocrlf=true，若不显式声明，add/checkout 会
+# 改写换行符，导致工作树与索引长期不一致（文件恒显示为已修改）。
+# 因此默认关闭全部换行转换，仅对必须为 LF 的脚本开例外。
+# ============================================================
+
+# 默认：不做任何换行转换，逐字节保留
+* -text
+
+# 例外：shell 脚本必须为 LF。若带上 CR，Linux 上执行会报
+# "\r: command not found" 之类的错误（服务器直接执行 scripts/*.sh）
+*.sh   text eol=lf
+*.bash text eol=lf
+
+# 二进制文件显式声明，防止被当作文本做差异计算
+# （多数已由 .gitignore 排除，此处为防御：万一被强制 add）
+*.safetensors binary
+*.pt          binary
+*.pth         binary
+*.bin         binary
+*.parquet     binary
+*.xlsx        binary
+*.png         binary
+*.jpg         binary
+*.pdf         binary

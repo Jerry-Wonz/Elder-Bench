@@ -1,0 +1,20 @@
+# 部署态评测配置：只包含实际线上配置，不进入默认能力横向组。
+extends: config.yaml
+
+subjects:
+  qwen35_4b_deploy_v2:
+    group: deploy-t015-mt3072
+    tags:
+    - sft
+    - persona-v2
+    - primary
+    base_url: http://127.0.0.1:8000/v1
+    api_key: env:EVAL_SUBJECT_API_KEY
+    model: qwen3.5-4b-ft
+    model_path: models/Qwen3.5-4B-sft-v3.2
+    tokenizer_path: models/Qwen3.5-4B-sft-v3.2
+    model_revision: local
+    max_model_len: 12288
+    temperature: 0.15
+    max_tokens: 3072
+    system_prompt_file: personas/xiaonuan_chat_4b_v2.txt

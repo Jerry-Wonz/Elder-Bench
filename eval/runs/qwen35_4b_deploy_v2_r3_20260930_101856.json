@@ -1,0 +1,89 @@
+{
+  "run_id": "qwen35_4b_deploy_v2_r3_20260930_101856",
+  "subject": "qwen35_4b_deploy_v2_r3",
+  "group": "deploy-replicate-t015-mt3072",
+  "tags": [
+    "sft",
+    "persona-v2",
+    "deploy-replicate",
+    "rep-3"
+  ],
+  "decoding": {
+    "temperature": 0.15,
+    "max_tokens": 3072,
+    "top_p": null,
+    "seed": 20260910,
+    "presence_penalty": null,
+    "frequency_penalty": null,
+    "stop": null,
+    "extra_body": null
+  },
+  "model": {
+    "model_path": "models/Qwen3.5-4B-sft-v3.2",
+    "model_revision": "local",
+    "tokenizer_path": "models/Qwen3.5-4B-sft-v3.2",
+    "tokenizer_sha256": "06b9509352d2af50381ab2247e083b80d32d5c0aba91c272ca9ff729b6a0e523",
+    "model_index_sha256": null,
+    "model_config_sha256": "b4890ee52ceabfbe93ea3ee91c1284c01b39f08b067f34677cce117294c212ac",
+    "max_model_len": 12288
+  },
+  "endpoint": {
+    "base_url": "http://127.0.0.1:8000/v1",
+    "model": "qwen3.5-4b-ft"
+  },
+  "system_prompt": {
+    "file": "personas/xiaonuan_chat_4b_v2.txt",
+    "sha256": "f66acbcc57f07f63d4b5f960fb4a2f5647930efa1806bcff731d81422064a3da"
+  },
+  "config_file": "eval/config.deploy_replicates.yaml",
+  "config_sha256": "417ed955157c6457da7ccfec0eb2e547e5e6a503cfd699247001e4654372a779",
+  "config_files": [
+    {
+      "path": "eval/config.deploy_replicates.yaml",
+      "sha256": "417ed955157c6457da7ccfec0eb2e547e5e6a503cfd699247001e4654372a779"
+    },
+    {
+      "path": "eval/config.deploy.yaml",
+      "sha256": "773ebe1c7a83dfb323602b7433aad17d729347e830f77b63771d63d7f45138b9"
+    },
+    {
+      "path": "eval/config.yaml",
+      "sha256": "8c95d0e77197efc69d77764da51fa0b31cec1a4051a40c855c9d8c7956f05231"
+    }
+  ],
+  "data": {
+    "adapter_version": "2.0",
+    "sampling_seed": 20260910,
+    "suites": {
+      "psy_calibration": {
+        "n": 97,
+        "sha256": "9fdc9626d0ad67f360d22cb8c15a56d98c86bed8ab25abc4a1360120743981cb"
+      }
+    }
+  },
+  "scoring": {
+    "scorer_version": "1.1",
+    "rule_version": "1.1",
+    "renderer_version": "1.0"
+  },
+  "code": {
+    "git_commit": "bfac6a666953fc62d19e1ccbcfe21fcc3000489e",
+    "dirty": true
+  },
+  "timing": {
+    "started": "2026-09-30 10:18:56",
+    "finished": "2026-09-30 10:19:11"
+  },
+  "outcome": {
+    "n_tasks": 97,
+    "done_before": 0,
+    "n_pending": 97,
+    "ok": 97,
+    "err": 0,
+    "elapsed_s": 14.5,
+    "suite": "psy_calibration",
+    "archived": true,
+    "limited": false
+  },
+  "kind": "run"
+}

@@ -1,0 +1,27 @@
+{
+  "checked_at": "2026-09-28",
+  "base_url": "http://192.168.13.165:8002/v1",
+  "model_id": "deepseek-flash",
+  "model_revision_alias": "deepseek-flash",
+  "models_endpoint_status": 200,
+  "model_listed": true,
+  "chat_endpoint_status": 200,
+  "request_parameters_builtin": [
+    "temperature",
+    "max_tokens",
+    "top_p",
+    "seed",
+    "presence_penalty",
+    "frequency_penalty",
+    "stop"
+  ],
+  "response_model": "deepseek-flash",
+  "finish_reason": "length",
+  "prompt_tokens": 35,
+  "completion_tokens": 16,
+  "reasoning_tokens": 14,
+  "content_chars": 2,
+  "has_reasoning_content": true,
+  "context_limit_exposed": false,
+  "note": "API key stored only in gitignored eval/.env; max_model_len is not advertised by /models and remains to be probed in H7."
+}
