@@ -52,6 +52,12 @@ env/
 /eval/results/_dryrun/
 /eval/results/_*.jsonl
 
+# ---------------- 评测历史归档（本地保留，不入库）----------------
+# 2026-10-10 清理：历史对象（glm53_flash、qwen35_4b_base）明细、scorer 1.0 时代报告、
+# 被取代的 summary/rulecheck、v1.x legacy 任务集与一次性调试产物移入此目录。
+# 内容保留在磁盘供追溯，不随仓库发布；run manifest 与 sha256 记录仍在 eval/runs/ 与报告头。
+/eval/_archive/
+
 # ---------------- 网盘同步残留 ----------------
 .WeDrive
 .Temp/

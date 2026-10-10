@@ -11,19 +11,22 @@
 
 ## 规范报告
 
-| subject | 报告 | 覆盖 | 门禁 |
-|---|---|---|---|
-| glm53_flash | `report_glm53_flash_scorer1.1_20260925_013512.md` | 10 卷，正例覆盖 97.86% | INSUFFICIENT |
-| qwen35_4b_base | `report_qwen35_4b_base_scorer1.1_20260925_015042.md` | 10 卷，100% | FAIL（FPR） |
-| qwen35_4b_deploy_v2 | `report_qwen35_4b_deploy_v2_scorer1.1_20260925_013735.md` | 10 卷，100% | FAIL（漏报） |
+| subject | 报告 | 覆盖 | 门禁 | 现状 |
+|---|---|---|---|---|
+| glm53_flash | `report_glm53_flash_scorer1.1_20260925_013512.md` | 10 卷，正例覆盖 97.86% | INSUFFICIENT | 历史对象，2026-10-10 移至 `eval/_archive/` |
+| qwen35_4b_base | `report_qwen35_4b_base_scorer1.1_20260925_015042.md` | 10 卷，100% | FAIL（FPR） | 历史对象，2026-10-10 移至 `eval/_archive/` |
+| qwen35_4b_deploy_v2 | `report_qwen35_4b_deploy_v2_scorer1.1_20260925_013735.md` | 10 卷，100% | FAIL（漏报） | 活动对象，仍在本目录 |
 
-并排对比：`compare_20260928_112705.md`。
+并排对比：现行 `compare_20260930_105544.md`；`compare_20260928_112705.md` 已随历史对象一并移至 `eval/_archive/`。
 
 ## 历史口径
 
-`eval/results/results_*.jsonl` 与 2026-09-25 之前的 `report_*.json/md` 使用 scorer 1.0。
-qwen 列的 `response` 混有推理轨迹，旧 NLG、规则命中与长度分箱不得继续作为对外结论；
-文件保留用于追溯和历史回归。v1 deploy/ablation 的 prompt、结果、报告和 manifest 已于 2026-09-28 按 H8 删除。
+2026-09-25 之前的 `report_*.json/md` 使用 scorer 1.0。qwen 列的 `response` 混有推理轨迹，
+旧 NLG、规则命中与长度分箱不得继续作为对外结论；文件保留用于追溯和历史回归。
+v1 deploy/ablation 的 prompt、结果、报告和 manifest 已于 2026-09-28 按 H8 删除。
+
+2026-10-10 清理：scorer 1.0 时代报告、历史对象（`glm53_flash`、`qwen35_4b_base`）的
+结果与报告已移至 `eval/_archive/`（未入库）；本目录保留活动对象的 scorer 1.1 产物。
 
 ## 发布限制
 

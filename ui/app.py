@@ -406,18 +406,22 @@ def _dimension_score_chart(rows: list[list[str]]) -> Optional[alt.Chart]:
         .mark_bar(cornerRadiusTopLeft=4, cornerRadiusTopRight=4)
         .encode(
             x=alt.X("dimension:N", sort=list(dict.fromkeys(df["dimension"])), title=None,
-                    axis=alt.Axis(labelAngle=0, labelFontSize=12,
-                                  labelColor=theme.MUTED, titleColor=theme.MUTED)),
+                    axis=alt.Axis(labelAngle=0, labelFontSize=13,
+                                  labelColor=theme.MUTED, titleColor=theme.MUTED,
+                                  titleFontSize=14)),
             xOffset=alt.XOffset("model:N", sort=models),
             y=alt.Y("score:Q", title="归一化分", scale=alt.Scale(domain=[0, 100]),
-                    axis=alt.Axis(labelColor=theme.MUTED, titleColor=theme.MUTED)),
+                    axis=alt.Axis(labelFontSize=13, titleFontSize=14,
+                                  labelColor=theme.MUTED, titleColor=theme.MUTED)),
             color=alt.Color("model:N", title=None,
                             scale=alt.Scale(range=list(theme.CATEGORICAL)),
                             legend=alt.Legend(orient="top", direction="horizontal",
-                                              labelFontSize=11, labelColor=theme.MUTED)),
+                                              columns=2, labelLimit=280,
+                                              labelFontSize=13, titleFontSize=13,
+                                              labelColor=theme.MUTED)),
             tooltip=["model:N", "dimension:N", alt.Tooltip("score:Q", format=".1f")],
         )
-        .properties(height=250)
+        .properties(height=360, width="container")
         .configure(background=theme.CARD)
         .configure_view(stroke=None)
         .configure_axis(
@@ -498,7 +502,11 @@ def tab_overview() -> None:
             "主表原样取自 `docs/三维度评测模型对比.md` §3，覆盖全部活动 subject，不重算、不改写；"
             "负向率越低越好，加粗为原文标记的最优值。"
         )
-        st.markdown(main_md)
+        # §3 主表在「分难度」「main / hard」等多值格子里用 `<br />` 换行，文档的
+        # HTML 版也是按换行渲染的。`st.markdown` 默认把内联 HTML 转义成字面量，
+        # 页面上就会显示成 `/ <br />`；放开 HTML 才能按原文语义换行。渲染的是
+        # 仓库内的只读文档，不涉及用户输入。
+        st.markdown(main_md, unsafe_allow_html=True)
 
     fig = _dimension_score_chart(rows)
     if fig is not None:

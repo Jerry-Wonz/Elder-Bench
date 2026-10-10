@@ -30,7 +30,7 @@
 
 ## 尺寸
 
-字号一律 px，不随浏览器基准字号缩放，这样命中 `DESIGN.md` 的 32 / 16 / 14 / 12
+字号一律 px，不随浏览器基准字号缩放，这样命中 `DESIGN.md` 的 32 / 16 / 15 / 13
 四档；表格里的 `.eb-tag` 小标签与图表文字也取 `--eb-fs-*`，没有第五档字号。
 间距用 8px 为基数的 `--eb-s1..s8`。字体族用 `--eb-font`，与
 `.streamlit/config.toml` 的 `font` 必须同步改，否则成对的数字会一个字距。
@@ -46,11 +46,11 @@ import palette as pal
 # `mark_text(fontSize=...)` 直接取用（那里要 int，不要 "12px"）。
 _FS_HERO = 32   # 核心数据
 _FS_TITLE = 16  # 卡片标题 / 表头
-_FS_BODY = 14   # 正文 / 表格内容
-_FS_AUX = 12    # 辅助信息
+_FS_BODY = 15   # 正文 / 表格内容
+_FS_AUX = 13    # 辅助信息
 
 # 侧栏深色层次（DESIGN.md 未定义，是本文件的扩展，故不进 palette.py）。
-# 栏底 = INK(#111827)，未选中文字/图标 = MUTED(#6B7280) 抬亮一档到 12px 下可读，
+# 栏底 = INK(#111827)，未选中文字/图标 = MUTED(#6B7280) 抬亮一档到 13px 下可读，
 # 选中态底 = 品牌色压暗一档，选中态左边条与图标 = 品牌色系。
 # 这几个常量必须定义在 `_TOKENS` 之前：`_TOKENS` 是 f-string，在模块导入时
 # 就求值，放在后面会直接 `NameError`。
@@ -145,7 +145,19 @@ _THEME_CSS = """
 <style>
 __TOKENS__
 html, body, [data-testid="stAppViewContainer"] { background: var(--eb-bg); color: var(--eb-ink); font-family: var(--eb-font); }
-[data-testid="stAppViewContainer"] * { font-family: var(--eb-font); }
+[data-testid="stMain"] :is(h1,h2,h3,h4,h5,h6,p,li,label,button,input,textarea,select),
+[data-testid="stSidebar"] :is(h1,h2,h3,h4,h5,h6,p,li,label,button,input,textarea,select),
+[data-baseweb="select"] { font-family: var(--eb-font); }
+/* 上一行只覆盖文字控件，不能写成 `[data-testid="stAppViewContainer"] *`：
+   Streamlit 的折叠箭头和导航图标依赖 Material Symbols 连字，全局覆盖后会把
+   `keyboard_double_arrow_left` 等图标名直接画成文字并覆盖相邻标题。 */
+[data-testid="stIconMaterial"], .material-symbols-rounded, .material-symbols-outlined, .material-icons {
+  font-family: "Material Symbols Rounded", "Material Symbols Outlined", "Material Icons" !important;
+  font-style: normal; font-weight: normal; line-height: 1; letter-spacing: normal;
+  text-transform: none; white-space: nowrap; word-wrap: normal; direction: ltr;
+  font-feature-settings: "liga"; -webkit-font-feature-settings: "liga";
+  -webkit-font-smoothing: antialiased;
+}
 [data-testid="stHeader"] { background: var(--eb-bg); }
 [data-testid="stMain"] .block-container { max-width: 1480px; padding: var(--eb-s3) var(--eb-s4) var(--eb-s8); }
 [data-testid="stMain"] p, [data-testid="stMain"] li { font-size: var(--eb-fs-body); }
@@ -194,7 +206,7 @@ def inject_theme() -> None:
 
 
 # `.eb-t-*` 是表格单元格里的小标签，不是 `DESIGN.md` 的四档正文字号之一：
-# 它嵌在 14px 的单元格里，取 12px 会与正文同宽而失层次，故取 11px 并加内边距。
+# 它嵌在 15px 的单元格里，取 13px 会与正文同宽而失层次，故取 11px 并加内边距。
 # 除此之外本文档所有字号都走 `--eb-fs-*`。
 #
 # 页头与品牌块的直接子元素都是**并列**的两个 div。这些是 `st.markdown` 送出的
@@ -208,7 +220,7 @@ _CARD_CSS = """
 .eb-page-chip { display: inline-flex; align-items: center; gap: var(--eb-s1); padding: var(--eb-s1) var(--eb-s2); border: 1px solid var(--eb-line); border-radius: var(--eb-r-pill); background: var(--eb-card); color: var(--eb-muted); font-size: var(--eb-fs-aux); font-weight: 400; white-space: nowrap; }
 .eb-page-chip::before { content: ""; width: 8px; height: 8px; border-radius: 50%; background: var(--eb-ok); box-shadow: 0 0 0 4px var(--eb-ok-bg); }
 .eb-summary-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: var(--eb-s2); margin-bottom: var(--eb-s3); }
-/* 卡片自上而下是「标题 16/600 → 核心数据 32/700 → 辅助 12/400」，
+/* 卡片自上而下是「标题 16/600 → 核心数据 32/700 → 辅助 13/400」，
    与 DESIGN.md 的四档一一对上。原先的「大图标 + 小标签」把图标摆在与标题
    同级的位置，尺寸上无处安放：图标要盖住 16/600 的标题就会喧宾夺主。改为
    图标内联在标题行内、尺寸随标题，核心数据独占一行取满 32px。 */
@@ -232,7 +244,7 @@ _CARD_CSS = """
 [data-testid="stMetric"] { padding: var(--eb-s2); border: 1px solid var(--eb-line); border-radius: var(--eb-r-card); background: var(--eb-card); box-shadow: var(--eb-shadow); }
 [data-testid="stMetricLabel"] { color: var(--eb-muted); font-size: var(--eb-fs-aux); font-weight: 400; }
 [data-testid="stMetricValue"] { color: var(--eb-ink); font-size: var(--eb-fs-hero); font-weight: 700; letter-spacing: -0.02em; }
-[data-testid="stCaptionContainer"] p { color: var(--eb-muted); font-size: var(--eb-fs-aux); font-weight: 400; }
+[data-testid="stCaptionContainer"] p { color: var(--eb-muted); font-size: var(--eb-fs-aux); font-weight: 400; line-height: 1.55; }
 /* 提示条按语义状态着色。Streamlit 的容器只区分 role="alert"（错误/警告）与
    role="status"（成功/信息），四档区分不了；内层却带 `stAlertContentSuccess`
    这样的 testid，故用 :has() 反选外层。:has() 本文件已有用例（表格横向滚动），
@@ -244,7 +256,8 @@ _CARD_CSS = """
 [data-testid="stAlertContainer"]:has([data-testid="stAlertContentInfo"]) { background: var(--eb-brand-tint); border-left: 3px solid var(--eb-brand); }
 /* 展开面板与进度条：圆角对齐卡片档，去掉 Streamlit 默认的第二档阴影。 */
 [data-testid="stExpander"] details { border: 1px solid var(--eb-line); border-radius: var(--eb-r-card); background: var(--eb-card); box-shadow: var(--eb-shadow); }
-[data-testid="stExpander"] summary { font-size: var(--eb-fs-body); }
+[data-testid="stExpander"] summary { min-height: 44px; font-size: var(--eb-fs-body); line-height: 1.5; }
+[data-testid="stExpander"] summary [data-testid="stIconMaterial"] { flex: none; }
 /* 状态小标签。6px 圆角（DESIGN.md 的「小标签」档），四档语义。
    底色与前景色由 `palette.tone()` 在 Python 侧内联给出，不在这里按 class 写死：
    同一个角色既出现在标签里，也出现在别处，两处共用一个映射才不会漂。 */

@@ -790,7 +790,7 @@ def check_design_tokens() -> Outcome:
     # 3) DESIGN.md 的四档字号与两档圆角。数值是文档里的原文，改了要同步改文档。
     geometry = (("--eb-r-card:", "12px"), ("--eb-r-tag:", "6px"),
                 ("--eb-fs-hero:", "32px"), ("--eb-fs-title:", "16px"),
-                ("--eb-fs-body:", "14px"), ("--eb-fs-aux:", "12px"))
+                ("--eb-fs-body:", "15px"), ("--eb-fs-aux:", "13px"))
     # 间距：8px 为基数的展开（DESIGN.md「间距」一节）。整页的疏密都压在这几个值上，
     # 改一个而不同步文档，看页面只会觉得"哪里不对"却指不出是哪。
     spacing = (("--eb-s1:", "8px"), ("--eb-s2:", "16px"), ("--eb-s3:", "24px"),
@@ -799,7 +799,14 @@ def check_design_tokens() -> Outcome:
         b.true(any(l.strip().startswith(f"{token} {want}") for l in theme._TOKENS.splitlines()),
                f"令牌 {token} 不是 {want}")
 
-    # 4) 图表层取色必须来自同一模块，不得再有第二套。
+    # 4) 字体规则必须保留 Material Symbols 图标字体。全局 `*` 覆盖会把
+    #    折叠箭头画成 `keyboard_double_arrow_left` 之类的图标名。
+    b.true("[data-testid=\"stAppViewContainer\"] * { font-family:" not in theme._THEME_CSS,
+           "全局字体规则不得覆盖 Streamlit 图标字体")
+    b.true("Material Symbols Rounded" in theme._THEME_CSS,
+           "theme.py 应显式恢复 Material Symbols 字体")
+
+    # 5) 图表层取色必须来自同一模块，不得再有第二套。
     from charts import BRAND as CHART_BRAND, INK as CHART_INK, MUTED as CHART_MUTED
     b.eq((CHART_BRAND, CHART_INK, CHART_MUTED), (palette.BRAND, palette.INK, palette.MUTED),
          "charts.py 的色值")

@@ -208,10 +208,14 @@ def heatmap(summaries: dict[str, dict[str, Any]],
         return None
     x = alt.X("indicator:N",
               sort=[i.label for i in indicators if i.label in set(df["indicator"])],
-              title=None, axis=alt.Axis(labelAngle=-38, labelLimit=200))
+              title=None,
+              axis=alt.Axis(labelAngle=-32, labelLimit=250, labelPadding=6,
+                            labelFontSize=13, titleFontSize=14))
     y = alt.Y("subject:N",
               sort=[s for s, _ in _pairs(summaries, subjects) if s in set(df["subject"])],
-              title=None)
+              title=None,
+              axis=alt.Axis(labelLimit=190, labelPadding=6,
+                            labelFontSize=13, titleFontSize=14))
 
     grey = alt.Chart(df).mark_rect(
         fill=GREY, stroke=pal.CARD, strokeWidth=1,
@@ -220,12 +224,15 @@ def heatmap(summaries: dict[str, dict[str, Any]],
         stroke=pal.CARD, strokeWidth=1,
     ).encode(
         x=x, y=y,
-        color=alt.Color("perf:Q", title="列内相对表现（1 = 该列最好）",
-                        scale=alt.Scale(domain=[0, 1], scheme=PERF_SCHEME)),
+        color=alt.Color("perf:Q",
+                        scale=alt.Scale(domain=[0, 1], scheme=PERF_SCHEME),
+                        legend=alt.Legend(title="列内相对表现（1 = 最优）",
+                                           titleLimit=220, titleFontSize=13,
+                                           labelFontSize=13)),
         tooltip=["subject:N", "indicator:N", "value:Q", "n:Q", "direction:N"],
     )
     labels = alt.Chart(df).mark_text(
-        fontSize=11, color=INK, lineBreak="\n",
+        fontSize=13, color=INK, lineBreak="\n", lineHeight=14,
     ).encode(x=x, y=y, text=alt.Text("text:N"))
     # 主红线越阈与次级越阈分成两个图层、两种边框：实线黑边是参与门禁判定的
     # 越阈，虚线灰边只是次级指标超限。共用一个边框会让读者以为次级也算门禁失败。
@@ -237,10 +244,12 @@ def heatmap(summaries: dict[str, dict[str, Any]],
     ).mark_rect(fillOpacity=0, stroke=FAIL_STROKE, strokeWidth=1.4,
                 strokeDash=[4, 3]).encode(x=x, y=y)
     slash = alt.Chart(df).transform_filter("datum.missing").mark_text(
-        fontSize=18, color=MISSING_COLOR,
+        fontSize=22, color=MISSING_COLOR,
     ).encode(x=x, y=y, text=alt.value("╱"))
+    n_subjects = len({s for s, _ in _pairs(summaries, subjects)})
+    render_height = max(height, 62 * max(1, n_subjects) + 150)
     return (grey + cells + labels + outline_fail + outline_secondary + slash
-            ).properties(height=height, width=820)
+            ).properties(height=render_height, width="container")
 
 
 # ---------------------------------------------------------------- 图二：长度分箱
@@ -303,17 +312,21 @@ def length_bins(summary: dict[str, Any],
     labels = [b for b in all_bin_labels() if b in set(df["bin"])]
     base = alt.Chart(df).encode(
         x=alt.X("bin:N", sort=labels, title="回复长度（字符）",
-                axis=alt.Axis(labelAngle=0)),
+                axis=alt.Axis(labelAngle=0, labelFontSize=13,
+                              titleFontSize=14, labelPadding=6)),
         y=alt.Y("rate_plot:Q", title="通过率（百分制）",
-                scale=alt.Scale(domain=[0, 108])),
+                scale=alt.Scale(domain=[0, 108]),
+                axis=alt.Axis(labelFontSize=13, titleFontSize=14,
+                              labelPadding=6)),
         xOffset=alt.XOffset("metric:N"),
         color=alt.Color("metric:N", title=None,
-                        scale=alt.Scale(range=list(CATEGORICAL))),
+                        scale=alt.Scale(range=list(CATEGORICAL)),
+                        legend=alt.Legend(labelFontSize=13, titleFontSize=13)),
         tooltip=["metric_full:N", "bin:N", "rate:Q", "k:Q", "n:Q"],
     )
     return (base.mark_bar()
-            + base.mark_text(dy=-7, fontSize=10, color=INK).encode(text="ns:N")
-            ).properties(height=height, width=690)
+            + base.mark_text(dy=-8, fontSize=12, color=INK).encode(text="ns:N")
+            ).properties(height=max(height, 340), width="container")
 
 
 # ---------------------------------------------------------------- 图三：子标签召回
@@ -362,16 +375,18 @@ def sublabel_recall(summary: dict[str, Any], *, height: int = 290) -> Optional[a
                               for r, n in zip(df["recall"], df["n_pos"])])
     base = alt.Chart(df).encode(
         x=alt.X("sublabel:N", sort=list(df["sublabel"]), title=None,
-                axis=alt.Axis(labelAngle=0)),
+                axis=alt.Axis(labelAngle=0, labelLimit=220, labelPadding=6,
+                              labelFontSize=13, titleFontSize=14)),
         y=alt.Y("recall:Q", title="召回率（百分制）",
-                scale=alt.Scale(domain=[0, 110])),
+                scale=alt.Scale(domain=[0, 110]),
+                axis=alt.Axis(labelFontSize=13, titleFontSize=14, labelPadding=6)),
         tooltip=["sublabel:N", "recall:Q", "miss_rate:Q", "n_pos:Q", "k:Q"],
     )
     return (base.mark_bar(color=BRAND, size=56)
-            + base.mark_text(dy=-9, fontSize=11, color=INK).encode(text="label_txt:N")
+            + base.mark_text(dy=-10, fontSize=12, color=INK).encode(text="label_txt:N")
             + base.transform_filter("isValid(datum.lo)").mark_rule(
                 strokeWidth=1.6, color=FAIL_STROKE).encode(y="lo:Q", y2="hi:Q")
-            ).properties(height=height, width=460)
+            ).properties(height=max(height, 340), width="container")
 
 
 # ---------------------------------------------------------------- 应用层辅助
